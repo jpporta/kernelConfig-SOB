@@ -1,0 +1,15 @@
+#!/bin/bash
+
+kernelName=$1
+
+# navegando para a pasta com kernels copilados
+cd /boot
+
+# selecionando kernel a ser executado
+mkinitramfs -o initrd.img-4.17.17${kernelName} 4.17.17${kernelName}
+
+# atualizando grup
+update-grub
+
+# bye
+reboot

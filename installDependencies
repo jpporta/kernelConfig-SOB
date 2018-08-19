@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# apt-get necessarios
+
+apt-get install libncurses5
+
+apt install libssl-dev
+
+apt-get install bison
+
+apt-get install flex
+
+apt-get install libelf-dev
+
+#apt install libelf-devel
+
+#apt install elfutils-libelf-devel

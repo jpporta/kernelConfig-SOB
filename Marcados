@@ -1,0 +1,120 @@
+/home/soul/Downloads/.config
+
+sudo apt-get install libncurses5
+
+sudo apt install libssl-dev
+
+sudo apt-get install bison
+
+sudo apt-get install flex
+
+tar -xvf linux-4.17.17.tar.xz -C /usr/src/
+
+cd /usr/src/
+
+ln -s linux-4.17.17 linux
+
+cd linux
+
+make menuconfig ou make localmodconfig
+
+vim.tiny /usr/src/linux/Makefile
+
+make bzImage
+
+make modules
+
+make modules_install
+
+make install
+
+cd /boot
+
+ls /lib/modules/
+
+mkinitramfs -o initrd.img-4.12(use o tab para completar) (nome do kernel)
+
+update-grub
+
+reboot
+
+cd /boot
+rm  vmlinuz-4.17.17exp1_v0 initrd.img-4.17.17exp1_v0 System.map-4.17.17exp1_v0 config-4.17.17exp1_v0
+
+cd /lib/modules
+rm -rf 4.17.17exp1_v0
+
+cd /var/lib/initramfs-tools/
+rm 4.17.17exp1_v0
+
+update-grub
+
+reboot
+
+cd /usr/src/
+
+rm -r linux linux-4.
+
+
+--Device Drivers--
+
+  --Generic Driver Options--
+    Support For uevent helper - off
+
+  --Memory Technology Device(MTD) support--
+    FTL (FLASH Translation Layer) support - off
+    NFTL (NAND Flash Translation Layer) support - off
+
+  --Misc Devices--
+    Realtek USB card reader -- off
+    Realtek PCI-E card reader -- off
+    VMware VMCI Driver -- off
+    Taos TSL2550 ambient light sensor -- off
+    Intersil ISL29003 ambient light sensor -- off
+    Intersil ISL29020 ambient light sensor -- off
+    BH1770GLC / SFH7770 combined ALS - Proximity sensor -- off
+    APDS990X combined als and proximity sensors -- off
+    Medfield Avago APDS9802 ALS Sensor module  -- off
+    Channel interface driver for the HP iLO processor -- off
+    Device driver for IBM RSA service processor -- off
+
+  Macintosh device drivers -- off
+
+  --Input device support--
+    Joystick interface - off
+    Joysticks/gamepads -- off
+    Tablets -- off
+    Touchscreens -- off
+
+    --Miscellaneous devices--
+      Analog Devices AD714x Capacitance Touch Sensor -- off
+      Arizona haptics support -- off
+      BMA150/SMB380 acceleration sensor support -- off
+      PC Speaker support -- off
+      < >   MAXIM MAX77693/MAX77843 haptic controller support
+      MAX8925 ONKEY support -- off
+      MAXIM MAX8997 haptic controller support -- off
+      MC13783 ON buttons -- off
+      MMA8450 - Freescale's 3-Axis, 8/12-bit Digital Acceleromete -- off
+      Sharp GP2AP002A00F I2C Proximity/Opto sensor driver -- off
+      Generic GPIO Beeper support -- off
+      Polled GPIO Decoder Input driver -- off
+      x86 Atlas button interface -- off
+      ATI / Philips USB RF remote control -- off
+      Keyspan DMR USB remote control -- off
+      Kionix KXTJ9 tri-axis digital accelerometer - off
+      Griffin PowerMate and Contour Jog support -- off
+      Yealink usb-p1k voip phone -- off
+      Regulator haptics support -- off
+      Retu Power button Driver -- off
+      X-Powers AXP20X power button driver -- off
+      TWL4030 Power button Driver  -- off
+      Support for TWL4030 Vibrator -- off
+      Support for TWL6040 Vibrator -- off
+      Motorola EZX PCAP misc input events -- off
+      IdeaPad Laptop Slidebar -- off
+      TI DRV260X haptics support -- off
+      TI DRV2665 haptics support -- off
+      TI DRV2667 haptics support -- off
+
+  --Serial ATA and Parallel ATA drivers (libata)--

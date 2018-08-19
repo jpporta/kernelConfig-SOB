@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# usar "sudo gnome-terminal" para utizar terminal de root
+
+# Descomapactar kernel no mesmo diretorio em /usr/src
+
+tar -xvf kernel/linux-4.17.17.tar.xz -C /usr/src/
+
+# indo para kernel descompactado
+cd /usr/src/
+
+# linkando pasta para diminuir trabalho com proximos comandos
+ln -s linux-4.17.17 linux
+
+cd linux
+
+# inicio das configurações do kernel
+echo "localmodconfig executando"
+make localmodconfig | tee ~/Desktop/localmodconfigOUT.txt
+
+# nano to enter kernel name
+nano /usr/src/linux/Makefile
+
+# making image
+echo "bzImage executando"
+time make bzImage > ~/Desktop/bzImageOUT.txt
+
+# make modules
+echo "modules executando"
+time make modules > ~/Desktop/modulesOUT.txt
+
+# make modules_install
+echo "modules_install executando"
+time make modules_install > ~/Desktop/modules_installOUT.txt
+
+# make install
+echo "install executando"
+time make install > ~/Desktop/installOUT.txt
+
+# kernel copilado
+
+

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+kernelName=$1
+
+cd /boot
+rm  vmlinuz-4.17.17${kernelName} initrd.img-4.17.17${kernelName} System.map-4.17.17${kernelName} config-4.17.17${kernelName}
+
+cd /lib/modules
+rm -rf 4.17.17${kernelName}
+
+cd /var/lib/initramfs-tools/
+rm 4.17.17${kernelName}
+
+cd /usr/src/
+rm -r linux
+rm -r linux-4.17.17
+
+update-grub
+
+reboot
