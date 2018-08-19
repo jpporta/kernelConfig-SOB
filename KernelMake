@@ -16,26 +16,26 @@ cd linux
 
 # inicio das configurações do kernel
 echo "localmodconfig executando"
-make localmodconfig | tee ~/Desktop/localmodconfigOUT.txt
+make localmodconfig | tee logsConfig/localmodconfigOUT.txt
 
 # nano to enter kernel name
 nano /usr/src/linux/Makefile
 
 # making image
 echo "bzImage executando"
-time make bzImage > ~/Desktop/bzImageOUT.txt
+time make bzImage > logsConfig/bzImageOUT.txt
 
 # make modules
 echo "modules executando"
-time make modules > ~/Desktop/modulesOUT.txt
+time make modules > logsConfig/modulesOUT.txt
 
 # make modules_install
 echo "modules_install executando"
-time make modules_install > ~/Desktop/modules_installOUT.txt
+time make modules_install > logsConfig/modules_installOUT.txt
 
 # make install
 echo "install executando"
-time make install > ~/Desktop/installOUT.txt
+time make install > logsConfig/installOUT.txt
 
 # kernel copilado
 
