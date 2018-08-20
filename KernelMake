@@ -1,7 +1,15 @@
 #!/bin/bash
 
-# usar "sudo gnome-terminal" para utizar terminal de root
+processNumber=$1
+
+rm -r logsConfig
+mkdir logsConfig
+touch logsConfig/times.txt
 directory=$(pwd)
+
+# usar "sudo gnome-terminal" para utizar terminal de root
+
+initTime=`date +%s`
 
 # Descomapactar kernel no mesmo diretorio em /usr/src
 
@@ -22,17 +30,18 @@ make localmodconfig | tee ${directory}/logsConfig/localmodconfigOUT.txt
 # nano to enter kernel name
 nano /usr/src/linux/Makefile
 
+
 # making image
 echo "bzImage executando"
-echo "Time bzImage:" > ${directory}/logsConfig/times.txt
+echo "Time bzImage:" >> ${directory}/logsConfig/times.txt
 
-{ time  make bzImage > ${directory}/logsConfig/bzImageOUT.txt ; } 2> ${directory}/logsConfig/times.txt
+{ time  make -j ${processNumber} bzImage > ${directory}/logsConfig/bzImageOUT.txt ; } 2>> ${directory}/logsConfig/times.txt 
 
 # make modules
 echo "modules executando"
 echo "Time modules:" >> ${directory}/logsConfig/times.txt
 
-{ time  make modules > ${directory}/logsConfig/modulesOUT.txt ; } 2>> ${directory}/logsConfig/times.txt
+{ time  make -j ${processNumber}  modules > ${directory}/logsConfig/modulesOUT.txt ; } 2>> ${directory}/logsConfig/times.txt
 
 # make modules_install
 echo "modules_install executando"
@@ -47,6 +56,15 @@ echo "Time install:" >> ${directory}/logsConfig/times.txt
 { time make install > ${directory}/logsConfig/installOUT.txt ; } 2>> ${directory}/logsConfig/times.txt
 
 # kernel copilado
+endTime=`date +%s`
+grep 'Time\|real' ${directory}/logsConfig/times.txt > ${directory}/logsConfig/timeFormatted.txt
+
+runtime=$((endTime - initTime))
+echo "Final time: ${runtime}s" >> ${directory}/logsConfig/timeFormatted.txt
+
+rm ${directory}/logsConfig/times.txt
+
+
 
 
 
