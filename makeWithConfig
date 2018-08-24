@@ -21,11 +21,10 @@ ln -s linux-4.17.17 linux
 
 cd linux
 
-# inicio das configurações do kernel
-echo "localmodconfig executando"
-make localmodconfig | tee ${directory}/logsConfig/localmodconfigOUT.txt
+# va em load e coloque o path para o .config desejado e salvar como .config
 
-# nano to enter kernel name
+make menuconfig
+
 nano /usr/src/linux/Makefile
 
 initTime=`date +%s`
@@ -61,8 +60,3 @@ runtime=$((endTime - initTime))
 echo "Final time: ${runtime}s" >> ${directory}/logsConfig/timeFormatted.txt
 
 rm ${directory}/logsConfig/times.txt
-
-
-
-
-
