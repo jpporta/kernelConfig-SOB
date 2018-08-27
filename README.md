@@ -19,12 +19,12 @@
 <ul>
 <li>Configurando e Copilando Kernel</li>
 </ul>
-<pre><code class="language-sh">$ ./KernelMake <noCoresparaUtilizar>
+<pre><code class="language-sh">$ ./KernelMake &lt;noCoresparaUtilizar&gt
 </code></pre>
 <ul>
 <li>Configurando e Copilando Kernel com o .config</li>
 </ul>
-<pre><code class="language-sh">$ ./makeWithConfig <noCoresparaUtilizar>
+<pre><code class="language-sh">$ ./makeWithConfig &lt;noCoresparaUtilizar&gt
 </code></pre>
 <ul>
 <li>Dentro das configurações escolher drivers opicionais para uso</li>
